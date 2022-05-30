@@ -1,7 +1,8 @@
-import { Container, Box, Heading, Flex, Icon, Link } from '@chakra-ui/react'
+import { Container, Box, Heading, Flex } from '@chakra-ui/react'
 
-import { FaFileCode } from 'react-icons/fa'
 import Logo from './logo'
+import SourceCodeButton from './source-code-button'
+import ThemeToggleButton from './theme-toggle-button'
 
 const Navbar = () => {
   return (
@@ -25,15 +26,9 @@ const Navbar = () => {
             <Logo />
           </Heading>
         </Flex>
-        <Box flex={1} align="right" pt="5px" opacity={0.8}>
-          <Link
-            variant="icon-link"
-            href="https://github.com/StephenLHChan/stephen-homepage"
-            target="_blank"
-            p={2}
-          >
-            <Icon as={FaFileCode} fontSize="20px" />
-          </Link>
+        <Box flex={1} align="right" alignItems="center" pt="5px" opacity={0.8}>
+          <SourceCodeButton />
+          <ThemeToggleButton />
         </Box>
       </Container>
     </Box>

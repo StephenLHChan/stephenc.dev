@@ -1,10 +1,13 @@
 import NextLink from 'next/link'
 import Image from 'next/image'
-import { Text, Box, Link } from '@chakra-ui/react'
+import { Text, Box, Link, useColorModeValue } from '@chakra-ui/react'
 
-import logoImg from '../../public/coding.png'
+import lightLogoImg from '../../public/logo.png'
+import darkLogoImg from '../../public/logo-dark.png'
 
 const Logo = () => {
+  const logoImg = useColorModeValue(lightLogoImg, darkLogoImg);
+
   return (
     <NextLink href="/" passHref>
       <Link _hover={'underline=none'}>
@@ -17,7 +20,7 @@ const Logo = () => {
           lineHeight="20px"
           p="10px"
         >
-          <Image src={logoImg} width="20px" height="20px" alt="logo" />
+          <Image src={logoImg} width="25px" height="25px" alt="logo" />
           <Box pl={3}>
             <Text
               fontFamily='M PLUS Rounded 1c", sans-serif'

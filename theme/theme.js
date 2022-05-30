@@ -1,9 +1,10 @@
 import { extendTheme } from '@chakra-ui/react'
+import { mode } from '@chakra-ui/theme-tools'
 
 const styles = {
-  global: () => ({
+  global: props => ({
     body: {
-      bg: '#f0e7db'
+      bg: mode('#f0e7db', '#202023')(props)
     }
   })
 }
@@ -11,14 +12,14 @@ const styles = {
 const components = {
   Link: {
     variants: {
-      'text-link': {
-        color: 'teal'
-      },
-      'icon-link': {
+      'text-link': props => ({
+        color: mode('teal', '#ff63c3')(props)
+      }),
+      'icon-link': props => ({
         _hover: {
-          color: 'teal'
+          color: mode('teal', '#ff63c3')(props)
         }
-      }
+      })
     }
   }
 }
