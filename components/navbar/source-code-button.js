@@ -1,4 +1,4 @@
-import { IconButton, Link, useColorModeValue } from '@chakra-ui/react'
+import { IconButton, Link } from '@chakra-ui/react'
 
 import { FaFileCode } from 'react-icons/fa'
 
