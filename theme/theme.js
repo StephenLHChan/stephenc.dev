@@ -28,5 +28,10 @@ const fonts = {
   body: 'M PLUS 1P'
 }
 
-const theme = extendTheme({ styles, fonts, components })
+const config = {
+  initialColorMode: 'dark',
+  useSystemColorMode: true
+}
+
+const theme = extendTheme({ config, styles, fonts, components })
 export default theme
