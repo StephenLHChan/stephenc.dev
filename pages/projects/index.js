@@ -8,7 +8,7 @@ import thumbPriceChecker from '../../public/images/projects/thumbnail_pricecheck
 
 const Projects = () => {
   return (
-    <Layout>
+    <Layout title={'Projects'}>
       <Container>
         <SectionTitle>Projects</SectionTitle>
         <Box m={6}>
