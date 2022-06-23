@@ -40,6 +40,11 @@ const CryptoDashboard = () => {
             </Link>
           </ListItem>
         </List>
+
+        <ProjectImage
+          src="/images/projects/crypto-dashboard_001.png"
+          alt="Crypto Dashboard"
+        />
       </Container>
     </Layout>
   )
