@@ -1,8 +1,7 @@
-import { Badge, Container, Icon, Link, List, ListItem } from '@chakra-ui/react'
+import { Badge, Container, Link, List, ListItem } from '@chakra-ui/react'
 import Layout from '../../components/layouts/page'
 import Paragraph from '../../components/paragraph'
 import { Breadcrumb, Tag, ProjectImage } from '../../components/project-item'
-import { IoLogoGithub } from 'react-icons/io5'
 
 const CryptoDashboard = () => {
   return (
