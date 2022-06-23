@@ -48,7 +48,7 @@ export const ProjectItem = ({ id, title, description, thumbnail }) => {
 export const Breadcrumb = ({ children }) => (
   <Box>
     <NextLink href="/projects" passHref>
-      <Link>Projects</Link>
+      <Link variant="text-link">Projects</Link>
     </NextLink>
     <span>
       {' '}
