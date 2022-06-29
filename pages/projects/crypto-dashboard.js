@@ -45,6 +45,10 @@ const CryptoDashboard = () => {
           src="/images/projects/crypto-dashboard_001.png"
           alt="Crypto Dashboard"
         />
+        <ProjectImage
+          src="/images/projects/crypto-dashboard_002.png"
+          alt="Crypto Dashboard"
+        />
       </Container>
     </Layout>
   )
