@@ -17,7 +17,7 @@ const Home = () => {
         <Box display={{ md: 'flex' }}>
           <Box flexGrow={1}>
             <Heading as="h2">Stephen LH Chan</Heading>
-            Software Engineer-to-be / Content Creater
+            Software Engineer / Content Creater
           </Box>
           <Box
             flexShrink={0}
@@ -49,11 +49,6 @@ const Home = () => {
               analysis and quality assurance in IT projects.
             </Paragraph>
             <br />
-            <Paragraph>
-              I am now looking for a software development job in Toronto,
-              Canada, and I am ready to take all the challenges as a software
-              engineer.
-            </Paragraph>
           </Box>
         </Section>
 

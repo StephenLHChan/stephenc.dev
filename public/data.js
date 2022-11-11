@@ -61,7 +61,7 @@ export const bioItems = [
   {
     id: 3,
     year: '2021',
-    children: <Text>Relocated to Toronto, Canada</Text>
+    children: <Text>Relocated to Toronto, ON</Text>
   },
   {
     id: 4,
@@ -75,6 +75,22 @@ export const bioItems = [
           variant="text-link"
         >
           NPower Canada
+        </Link>
+      </Text>
+    )
+  },
+  {
+    id: 5,
+    year: '2022',
+    children: (
+      <Text>
+        Start working as Cloud Monitoring Engineer at{' '}
+        <Link
+          href="https://www.bmo.com/"
+          target="_blank"
+          variant="text-link"
+        >
+          BMO
         </Link>
       </Text>
     )
