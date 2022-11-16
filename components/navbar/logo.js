@@ -6,10 +6,10 @@ import lightLogoImg from '../../public/logo.png'
 import darkLogoImg from '../../public/logo-dark.png'
 
 const Logo = () => {
-  const logoImg = useColorModeValue(lightLogoImg, darkLogoImg);
+  const logoImg = useColorModeValue(lightLogoImg, darkLogoImg)
 
   return (
-    <NextLink href="/" passHref>
+    <NextLink href="/" legacyBehavior passHref>
       <Link _hover={'underline=none'}>
         <Box
           h="30px"
@@ -20,7 +20,7 @@ const Logo = () => {
           lineHeight="20px"
           p="10px"
         >
-          <Image src={logoImg} width="25px" height="25px" alt="logo" />
+          <Image src={logoImg} width={25} height={25} alt="logo" />
           <Box pl={3}>
             <Text
               fontFamily='M PLUS Rounded 1c", sans-serif'

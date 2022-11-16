@@ -1,5 +1,5 @@
 import NextLink from 'next/link'
-import { Box, Text, Link } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 
 const Footer = () => {
   return (
@@ -8,7 +8,7 @@ const Footer = () => {
         <Text fontSize={'sm'}>
           &copy; {new Date().getFullYear()}{' '}
           <NextLink href="/" passHref>
-            <Link>Stephen LH Chan</Link>
+            Stephen LH Chan
           </NextLink>
           . All Rights Reserved.
         </Text>
