@@ -16,7 +16,7 @@ import { ChevronRightIcon } from '@chakra-ui/icons'
 export const ProjectItem = ({ id, title, description, thumbnail }) => {
   return (
     <Box w="100%" textAlign="center" mb={6}>
-      <NextLink href={`/projects/${id}`} passHref scroll={false}>
+      <NextLink href={`/projects/${id}`} passHref legacyBehavior scroll={false}>
         <LinkBox>
           <Box
             borderRadius="lg"
@@ -47,7 +47,7 @@ export const ProjectItem = ({ id, title, description, thumbnail }) => {
 
 export const Breadcrumb = ({ children }) => (
   <Box>
-    <NextLink href="/projects" passHref>
+    <NextLink href="/projects" legacyBehavior passHref>
       <Link variant="text-link">Projects</Link>
     </NextLink>
     <span>

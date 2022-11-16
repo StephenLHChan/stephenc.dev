@@ -8,7 +8,7 @@ const Footer = () => {
         <Text fontSize={'sm'}>
           &copy; {new Date().getFullYear()}{' '}
           <NextLink href="/" passHref>
-            <Link>Stephen LH Chan</Link>
+            Stephen LH Chan
           </NextLink>
           . All Rights Reserved.
         </Text>
