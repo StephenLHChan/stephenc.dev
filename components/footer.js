@@ -1,5 +1,5 @@
 import NextLink from 'next/link'
-import { Box, Text, Link } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 
 const Footer = () => {
   return (
