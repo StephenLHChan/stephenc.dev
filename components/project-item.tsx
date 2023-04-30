@@ -15,39 +15,33 @@ import { ChevronRightIcon } from '@chakra-ui/icons'
 export const ProjectItem = ({ id, title, description, thumbnail }) => {
   return (
     <Box w="100%" textAlign="center" mb={6}>
-      <NextLink href={`/projects/${id}`} passHref legacyBehavior scroll={false}>
-        <LinkBox>
-          <Box
-            borderRadius="lg"
-            borderWidth="1px"
-            overflow="hidden"
-          >
-            <NextImage
-              src={thumbnail}
-              alt="title"
-              className="project-item-thumbnail"
-              placeholder="blur"
-            />
-            <LinkOverlay href={`/projects/${id}`} target="_blank">
-              <Text mt={2} fontSize={20}>
-                {title}
-              </Text>
-              <Text fontSize={14} mb={4}>
-                {description}
-              </Text>
-            </LinkOverlay>
-          </Box>
-        </LinkBox>
-      </NextLink>
+      <LinkBox as={NextLink} href={`/projects/${id}`} passHref scroll={false}>
+        <Box borderRadius="lg" borderWidth="1px" overflow="hidden">
+          <NextImage
+            src={thumbnail}
+            alt="title"
+            className="project-item-thumbnail"
+            placeholder="blur"
+          />
+          <LinkOverlay href={`/projects/${id}`} target="_blank">
+            <Text mt={2} fontSize={20}>
+              {title}
+            </Text>
+            <Text fontSize={14} mb={4}>
+              {description}
+            </Text>
+          </LinkOverlay>
+        </Box>
+      </LinkBox>
     </Box>
   )
 }
 
 export const Breadcrumb = ({ children }) => (
   <Box>
-    <NextLink href="/projects" legacyBehavior passHref>
-      <Link variant="text-link">Projects</Link>
-    </NextLink>
+    <Link as={NextLink} href="/projects" passHref variant="text-link">
+      Projects
+    </Link>
     <span>
       {' '}
       <ChevronRightIcon />{' '}

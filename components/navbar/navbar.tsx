@@ -35,7 +35,13 @@ const Navbar = ({ path }) => {
           </LinkItem>
         </Stack>
 
-        <Box flex={1} alignItems="center" pt="5px" opacity={0.8}>
+        <Box
+          flex={1}
+          textAlign="right"
+          alignItems="center"
+          pt="5px"
+          opacity={0.8}
+        >
           <SourceCodeButton />
           <ThemeToggleButton />
 
