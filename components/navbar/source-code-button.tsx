@@ -10,7 +10,7 @@ const SourceCodeButton = () => {
       target="_blank"
       p={2}
     >
-      <IconButton icon={<FaFileCode />} size="sm" />
+      <IconButton icon={<FaFileCode />} aria-label="source" size="sm" />
     </Link>
   )
 }

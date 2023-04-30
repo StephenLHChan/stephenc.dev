@@ -3,7 +3,7 @@ import { Box, Text } from '@chakra-ui/react'
 
 const Footer = () => {
   return (
-    <Box align="center" mt="4">
+    <Box textAlign="center" mt="4">
       <Box as="span" color="gray.600">
         <Text fontSize={'sm'}>
           &copy; {new Date().getFullYear()}{' '}

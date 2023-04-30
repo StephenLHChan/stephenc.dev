@@ -8,7 +8,7 @@ const SectionTitle = ({ children }) => {
       fontSize="xl"
       textDecoration="underline"
       textDecorationStyle="wavy"
-      textDecorationThickness={3}
+      textDecorationThickness="3"
       textUnderlineOffset={6}
     >
       {children}

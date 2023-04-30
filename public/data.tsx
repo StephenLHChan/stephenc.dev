@@ -85,11 +85,7 @@ export const bioItems = [
     children: (
       <Text>
         Start working as Cloud Monitoring Engineer at{' '}
-        <Link
-          href="https://www.bmo.com/"
-          target="_blank"
-          variant="text-link"
-        >
+        <Link href="https://www.bmo.com/" target="_blank" variant="text-link">
           BMO
         </Link>
       </Text>
