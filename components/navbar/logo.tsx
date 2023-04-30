@@ -1,6 +1,6 @@
 import NextLink from 'next/link'
 import Image from 'next/image'
-import { Text, Box, Link, useColorModeValue } from '@chakra-ui/react'
+import { Text, Box, LinkOverlay, useColorModeValue } from '@chakra-ui/react'
 
 import lightLogoImg from '../../public/logo.png'
 import darkLogoImg from '../../public/logo-dark.png'
@@ -10,7 +10,7 @@ const Logo = () => {
 
   return (
     <NextLink href="/" legacyBehavior passHref>
-      <Link _hover={'underline=none'}>
+      <LinkOverlay href="/">
         <Box
           h="30px"
           display="inline-flex"
@@ -31,7 +31,7 @@ const Logo = () => {
             </Text>
           </Box>
         </Box>
-      </Link>
+      </LinkOverlay>
     </NextLink>
   )
 }
