@@ -15,14 +15,7 @@ const Navbar = ({ path }) => {
       css={{ backdropFilter: 'blur(10px)' }}
       zIndex={1}
     >
-      <Container
-        display="flex"
-        p={2}
-        maxW="container.md"
-        wrap="wrap"
-        align="center"
-        justify="space-between"
-      >
+      <Container display="flex" p={2} maxW="container.md">
         <Flex align="center" mr={5}>
           <Heading as="h1" size="lg">
             <Logo />
@@ -42,7 +35,7 @@ const Navbar = ({ path }) => {
           </LinkItem>
         </Stack>
 
-        <Box flex={1} align="right" alignItems="center" pt="5px" opacity={0.8}>
+        <Box flex={1} alignItems="center" pt="5px" opacity={0.8}>
           <SourceCodeButton />
           <ThemeToggleButton />
 
