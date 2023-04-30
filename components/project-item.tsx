@@ -7,7 +7,6 @@ import {
   Heading,
   Badge,
   Image,
-  useColorModeValue,
   LinkBox,
   LinkOverlay
 } from '@chakra-ui/react'
@@ -21,7 +20,6 @@ export const ProjectItem = ({ id, title, description, thumbnail }) => {
           <Box
             borderRadius="lg"
             borderWidth="1px"
-            borderColor={useColorModeValue('white')}
             overflow="hidden"
           >
             <NextImage
