@@ -55,7 +55,7 @@ const Home = () => {
         <Section delay={0.4}>
           <SectionTitle>Bio</SectionTitle>
           {bioItems.map(({ id, year, children }) => {
-            return <BioItem id={id} year={year} content={children} />
+            return <BioItem key={id} id={id} year={year} content={children} />
           })}
         </Section>
 
@@ -85,7 +85,14 @@ const Home = () => {
             justify="space-between"
           >
             {socialMediaList.map(({ type, link, icon }) => {
-              return <SocialMediaIcon type={type} link={link} icon={icon} />
+              return (
+                <SocialMediaIcon
+                  key={type}
+                  type={type}
+                  link={link}
+                  icon={icon}
+                />
+              )
             })}
           </Flex>
         </Section>
