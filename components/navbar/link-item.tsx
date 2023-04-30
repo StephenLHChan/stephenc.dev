@@ -1,7 +1,7 @@
 import NextLink from 'next/link'
 import { Link, useColorModeValue } from '@chakra-ui/react'
 
-const LinkItem = ({ href, path, target, children, ...props }) => {
+const LinkItem = ({ href, path, children, ...props }) => {
   const active = path === href
   const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
   return (
@@ -10,7 +10,6 @@ const LinkItem = ({ href, path, target, children, ...props }) => {
         p={2}
         bg={active ? '#88ccca' : undefined}
         color={active ? '#202023' : inactiveColor}
-        target={target}
         {...props}
       >
         {children}
