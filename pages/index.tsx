@@ -1,15 +1,15 @@
 import { Container, Box, Flex, Link } from '@chakra-ui/react'
 import { TypeAnimation } from 'react-type-animation'
-import Layout from '../components/layouts/page'
+import Layout from '@/components/layouts/page'
 
-import SocialMediaIcon from '../components/social-media-icon'
-import SectionTitle from '../components/section-title'
-import BioItem from '../components/bioItem'
-import Paragraph from '../components/paragraph'
-import Section from '../components/section'
-import ProfilePic from '../components/profile-pic'
+import SocialMediaIcon from '@/components/social-media-icon'
+import SectionTitle from '@/components/section-title'
+import BioItem from '@/components/bioItem'
+import Paragraph from '@/components/paragraph'
+import Section from '@/components/section'
+import ProfilePic from '@/components/profile-pic'
 
-import { bioItems, socialMediaList } from '../public/data'
+import { bioItems, socialMediaList } from '@/public/data'
 
 const Home = () => {
   return (
