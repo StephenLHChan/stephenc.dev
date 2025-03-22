@@ -1,13 +1,8 @@
 import NextLink from 'next/link'
 import Image from 'next/image'
-import { Text, Box, Link, useColorModeValue } from '@chakra-ui/react'
-
-import lightLogoImg from '../../public/logo.png'
-import darkLogoImg from '../../public/logo-dark.png'
+import { Text, Box, Link } from '@chakra-ui/react'
 
 const Logo = () => {
-  const logoImg = useColorModeValue(lightLogoImg, darkLogoImg)
-
   return (
     <Link as={NextLink} href="/" passHref _hover={{ underline: 'none' }}>
       <Box
@@ -19,7 +14,12 @@ const Logo = () => {
         lineHeight="20px"
         p="10px"
       >
-        <Image src={logoImg} width={25} height={25} alt="logo" />
+        <Image
+          src={'/apple-touch-icon.png'}
+          width={25}
+          height={25}
+          alt="logo"
+        />
         <Box pl={3}>
           <Text
             fontFamily='M PLUS Rounded 1c", sans-serif'
