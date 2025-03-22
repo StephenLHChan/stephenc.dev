@@ -1,4 +1,5 @@
-import { Container, Box, Heading, Flex, Link } from '@chakra-ui/react'
+import { Container, Box, Flex, Link } from '@chakra-ui/react'
+import { TypeAnimation } from 'react-type-animation'
 import Layout from '../components/layouts/page'
 
 import SocialMediaIcon from '../components/social-media-icon'
@@ -15,9 +16,15 @@ const Home = () => {
     <Layout title={''}>
       <Container>
         <Box display={{ md: 'flex' }}>
-          <Box flexGrow={1}>
-            <Heading as="h2">Stephen LH Chan</Heading>
-            Software Engineer / Content Creater
+          <Box flexGrow={1} fontSize={'4xl'}>
+            <TypeAnimation
+              sequence={['hey! this is Stephen ...']}
+              wrapper="h1"
+              cursor={true}
+              repeat={0}
+              speed={40}
+              style={{ display: 'inline-block' }}
+            />
           </Box>
           <Box
             flexShrink={0}
