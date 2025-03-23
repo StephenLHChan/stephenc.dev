@@ -8,7 +8,7 @@ import {
   Button
 } from '@chakra-ui/react'
 
-import Layout from '../components/layouts/page'
+import Layout from '@/components/layouts/page'
 
 const NotFound = () => {
   return (

@@ -4,8 +4,8 @@ import Section from '../../components/section'
 import SectionTitle from '../../components/section-title'
 import { ProjectItem } from '../../components/project-item'
 
-import thumbCrypto from '../../public/images/projects/thumbnail_crypto.png'
-import thumbPriceChecker from '../../public/images/projects/thumbnail_pricechecker.png'
+import thumbCrypto from '../../../public/images/projects/thumbnail_crypto.png'
+import thumbPriceChecker from '../../../public/images/projects/thumbnail_pricechecker.png'
 
 const Projects = () => {
   return (
