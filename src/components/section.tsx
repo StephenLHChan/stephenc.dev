@@ -1,6 +1,15 @@
-import { motion } from 'framer-motion'
+'use client'
 
-const Section = ({ children, delay = 0 }) => {
+import { motion } from 'motion/react'
+
+import { ReactNode } from 'react'
+
+interface SectionProps {
+  children: ReactNode
+  delay?: number
+}
+
+const Section = ({ children, delay = 0 }: SectionProps) => {
   return (
     <motion.div
       initial={{ y: -20, opacity: 0 }}
