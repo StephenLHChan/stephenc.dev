@@ -9,7 +9,7 @@ import Paragraph from '@/components/paragraph'
 import Section from '@/components/section'
 import ProfilePic from '@/components/profile-pic'
 
-import { bioItems, socialMediaList } from '@/public/data'
+import { bioItems, socialMediaList } from '../../public/data'
 
 const Home = () => {
   return (
