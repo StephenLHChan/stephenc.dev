@@ -47,7 +47,9 @@ const Home = () => {
       <Section delay={0.4}>
         <SectionTitle>Bio</SectionTitle>
         {bioItems.map(({ id, year, children }) => {
-          return <BioItem key={id} id={id} year={year} content={children} />
+          return (
+            <BioItem key={id} id={String(id)} year={year} content={children} />
+          )
         })}
       </Section>
 
