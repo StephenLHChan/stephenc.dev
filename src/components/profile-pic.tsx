@@ -1,11 +1,13 @@
-import { Image } from '@chakra-ui/react'
+import Image from 'next/image'
 
 const ProfilePic = () => {
   return (
     <Image
       src="/images/profile-pic.jpeg"
       alt="Profile image"
-      borderRadius="full"
+      width={120}
+      height={120}
+      className="rounded-full"
     />
   )
 }
