@@ -1,4 +1,6 @@
-import { Container, Box, Heading, Flex, Stack } from '@chakra-ui/react'
+'use client'
+
+import { usePathname } from 'next/navigation'
 
 import Logo from './logo'
 import SourceCodeButton from './source-code-button'
@@ -6,51 +8,36 @@ import ThemeToggleButton from './theme-toggle-button'
 import LinkItem from './link-item'
 import NavMenu from './nav-menu'
 
-const Navbar = ({ path }) => {
-  return (
-    <Box
-      position="fixed"
-      as="nav"
-      w="100%"
-      css={{ backdropFilter: 'blur(10px)' }}
-      zIndex={1}
-    >
-      <Container display="flex" p={2} maxW="container.md">
-        <Flex align="center" mr={5}>
-          <Heading as="h1" size="lg">
-            <Logo />
-          </Heading>
-        </Flex>
+const Navbar = () => {
+  const pathname = usePathname()
 
-        <Stack
-          direction={{ base: 'column', md: 'row' }}
-          display={{ base: 'none', md: 'flex' }}
-          width={{ base: 'full', md: 'auto' }}
-          alignItems="center"
-          flexGrow={1}
-          mt={{ base: 4, md: 0 }}
-        >
-          <LinkItem href="/projects" path={path}>
+  return (
+    <nav className="fixed w-full z-10 backdrop-blur-md bg-white/80 dark:bg-gray-900/80">
+      <div className="container mx-auto flex items-center justify-between p-2 max-w-3xl">
+        {/* Logo Section */}
+        <div className="flex items-center mr-5">
+          <h1 className="text-lg font-bold">
+            <Logo />
+          </h1>
+        </div>
+
+        {/* Navigation Links */}
+        <div className="hidden md:flex flex-grow items-center space-x-4">
+          <LinkItem href="/projects" path={pathname}>
             Projects
           </LinkItem>
-        </Stack>
+        </div>
 
-        <Box
-          flex={1}
-          textAlign="right"
-          alignItems="center"
-          pt="5px"
-          opacity={0.8}
-        >
+        {/* Right Section */}
+        <div className="flex items-center space-x-2">
           <SourceCodeButton />
           <ThemeToggleButton />
-
-          <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
+          <div className="md:hidden">
             <NavMenu />
-          </Box>
-        </Box>
-      </Container>
-    </Box>
+          </div>
+        </div>
+      </div>
+    </nav>
   )
 }
 

@@ -1,22 +1,32 @@
 import NextLink from 'next/link'
-import { Link, useColorModeValue } from '@chakra-ui/react'
+import { cn } from '@/lib/utils'
 
-const LinkItem = ({ href, path, children, ...props }) => {
-  const active = path === href
-  const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
+const LinkItem = ({
+  href,
+  path,
+  children,
+  ...props
+}: {
+  href: string
+  path: string | null
+  children: React.ReactNode
+}) => {
+  const isActive = path === href
+
   return (
-    <Link
-      as={NextLink}
+    <NextLink
       href={href}
-      passHref
-      scroll={false}
-      p={2}
-      bg={active ? '#88ccca' : undefined}
-      color={active ? '#202023' : inactiveColor}
       {...props}
+      className={cn(
+        'p-2 rounded-md transition-colors',
+        isActive
+          ? 'bg-teal-400 text-gray-900'
+          : 'text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800'
+      )}
     >
       {children}
-    </Link>
+    </NextLink>
   )
 }
+
 export default LinkItem

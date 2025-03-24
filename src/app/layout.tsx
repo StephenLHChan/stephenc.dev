@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 
 import Footer from '@/components/footer'
 import { Navbar } from '@/components/navbar'
+import { ThemeProvider } from '@/components/theme-provider'
 
 export const metadata = {
   title: 'Stephen LH Chan - Homepage',
@@ -27,18 +28,25 @@ export const viewport: Viewport = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="author" content="Stephen LH Chan" />
       </head>
       <body>
-        <main className={cn('pb-8')}>
-          {/* <Navbar path={router.asPath} /> */}
-          <div className="container mx-auto max-w-3xl pt-14">
-            {children}
-            <Footer />
-          </div>
-        </main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className={cn('pb-8')}>
+            <Navbar />
+            <div className="container mx-auto max-w-3xl pt-14">
+              {children}
+              <Footer />
+            </div>
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   )

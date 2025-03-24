@@ -1,29 +1,27 @@
-import NextLink from 'next/link'
 import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  IconButton,
-  Link
-} from '@chakra-ui/react'
-import { HamburgerIcon } from '@chakra-ui/icons'
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem
+} from '@/components/ui/dropdown-menu'
+import { Button } from '@/components/ui/button'
+import { HamburgerMenuIcon } from '@radix-ui/react-icons'
+import NextLink from 'next/link'
 
 const NavMenu = () => {
   return (
-    <Menu isLazy id="navbar-menu">
-      <MenuButton
-        as={IconButton}
-        icon={<HamburgerIcon />}
-        variant="outline"
-        aria-label="Options"
-      />
-      <MenuList>
-        <NextLink href="/projects" passHref>
-          <MenuItem as={Link}>Projects</MenuItem>
-        </NextLink>
-      </MenuList>
-    </Menu>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" className="p-2" aria-label="Options">
+          <HamburgerMenuIcon className="w-5 h-5" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-40">
+        <DropdownMenuItem asChild>
+          <NextLink href="/projects">Projects</NextLink>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 
