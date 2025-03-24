@@ -1,15 +1,19 @@
-import { Box, Text } from '@chakra-ui/react'
-
-const BioItem = ({ id, year, content }) => {
+const BioItem = ({
+  id,
+  year,
+  content
+}: {
+  id: string
+  year: string
+  content: React.ReactNode
+}) => {
   return (
-    <Box key={id} display={'flex'} pb={2}>
-      <Box w="3.4em">
-        <Text w={'3.4em'} fontWeight={'bold'}>
-          {year}
-        </Text>
-      </Box>
-      <Box ml={10}>{content}</Box>
-    </Box>
+    <div key={id} className="flex pb-2">
+      <div className="w-[3.4em]">
+        <span className="font-bold">{year}</span>
+      </div>
+      <div className="ml-10 w-4/5">{content}</div>
+    </div>
   )
 }
 
