@@ -10,5 +10,6 @@
       }
     ],
     "react/display-name": 0
-  }
+  },
+  "ignorePatterns": ["src/components/ui/"]
 }
