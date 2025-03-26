@@ -17,7 +17,7 @@ import {
   IoLogoFacebook
 } from 'react-icons/io5'
 
-export const socialMediaList = [
+const socialMediaList = [
   {
     type: 'LinkedIn',
     link: 'https://www.linkedin.com/in/stephenlhc/',
