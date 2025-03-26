@@ -1,7 +1,5 @@
-import styled from '@emotion/styled'
-
-const Paragraph = styled.p`
-  text-align: justify;
-`
+const Paragraph = ({ children }: { children: React.ReactNode }) => {
+  return <p className="text-justify">{children}</p>
+}
 
 export default Paragraph

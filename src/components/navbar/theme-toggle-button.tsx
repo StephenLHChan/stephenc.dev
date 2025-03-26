@@ -1,17 +1,25 @@
-import { IconButton, useColorMode, useColorModeValue } from '@chakra-ui/react'
-import { SunIcon, MoonIcon } from '@chakra-ui/icons'
+import { SunIcon, MoonIcon } from '@radix-ui/react-icons'
+import { useTheme } from 'next-themes'
+
+import { Button } from '@/components/ui/button'
 
 const ThemeToggleButton = () => {
-  const { toggleColorMode } = useColorMode()
+  const { theme, setTheme } = useTheme()
 
   return (
-    <IconButton
-      aria-label="Toggle theme"
-      colorScheme={useColorModeValue('purple', 'orange')}
-      icon={useColorModeValue(<MoonIcon />, <SunIcon />)}
-      onClick={toggleColorMode}
+    <Button
+      variant="outline"
       size="sm"
-    />
+      className="p-2"
+      aria-label="Toggle theme"
+      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+    >
+      {theme === 'light' ? (
+        <MoonIcon className="w-4 h-4" />
+      ) : (
+        <SunIcon className="w-4 h-4" />
+      )}
+    </Button>
   )
 }
 

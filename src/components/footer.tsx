@@ -1,19 +1,18 @@
-import NextLink from 'next/link'
-import { Box, Text } from '@chakra-ui/react'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <Box textAlign="center" mt="4">
-      <Box as="span" color="gray.600">
-        <Text fontSize={'sm'}>
+    <div className="flex flex-col justify-center items-center mt-4 w-full">
+      <span className="text-gray-600">
+        <p className="text-sm text-center">
           &copy; {new Date().getFullYear()}{' '}
-          <NextLink href="/" passHref>
+          <Link href="/" className="hover:underline">
             Stephen LH Chan
-          </NextLink>
+          </Link>
           . All Rights Reserved.
-        </Text>
-      </Box>
-    </Box>
+        </p>
+      </span>
+    </div>
   )
 }
 
