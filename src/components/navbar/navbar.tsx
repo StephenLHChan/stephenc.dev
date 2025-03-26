@@ -8,6 +8,8 @@ import ThemeToggleButton from './theme-toggle-button'
 import LinkItem from './link-item'
 import NavMenu from './nav-menu'
 
+const navItems = [{ path: '/projects', label: 'Projects' }]
+
 const Navbar = () => {
   const pathname = usePathname()
 
@@ -23,9 +25,11 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <div className="hidden md:flex flex-grow items-center space-x-4">
-          <LinkItem href="/projects" path={pathname}>
-            Projects
-          </LinkItem>
+          {navItems.map(item => (
+            <LinkItem key={item.path} href={item.path} path={pathname}>
+              {item.label}
+            </LinkItem>
+          ))}
         </div>
 
         {/* Right Section */}
@@ -33,7 +37,7 @@ const Navbar = () => {
           <SourceCodeButton />
           <ThemeToggleButton />
           <div className="md:hidden">
-            <NavMenu />
+            <NavMenu items={navItems} />
           </div>
         </div>
       </div>
