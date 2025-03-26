@@ -1,14 +1,17 @@
-import type { Viewport } from 'next'
+import type { Viewport, Metadata } from 'next'
+
 import './globals.css'
 
 import { cn } from '@/lib/utils'
 
+import Fonts from '@/components/fonts'
 import Footer from '@/components/footer'
 import { Navbar } from '@/components/navbar'
 import { ThemeProvider } from '@/components/theme-provider'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Stephen LH Chan - Homepage',
+  authors: [{ name: 'Stephen LH Chan' }],
   description: "Stephen LH Chan's homepage",
   icons: {
     icon: '/favicon.ico',
@@ -29,9 +32,7 @@ export const viewport: Viewport = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="author" content="Stephen LH Chan" />
-      </head>
+      <Fonts />
       <body>
         <ThemeProvider
           attribute="class"

@@ -9,7 +9,7 @@ const Logo = () => {
     >
       <Image src="/apple-touch-icon.png" width={25} height={25} alt="logo" />
       <span className="pl-3 font-bold leading-[20px] font-sans">
-        Stephen LH Chan
+        <h1>Stephen LH Chan</h1>
       </span>
     </NextLink>
   )
