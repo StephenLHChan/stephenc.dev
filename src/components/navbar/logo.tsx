@@ -5,9 +5,15 @@ const Logo = () => {
   return (
     <NextLink
       href="/"
-      className="flex items-center h-[30px] p-[10px] text-[18px] font-bold no-underline"
+      className="group flex items-center h-[30px] p-[10px] text-[18px] font-bold no-underline"
     >
-      <Image src="/apple-touch-icon.png" width={25} height={25} alt="logo" />
+      <Image
+        src="/apple-touch-icon.png"
+        width={25}
+        height={25}
+        alt="logo"
+        className="transition-transform duration-500 group-hover:rotate-360"
+      />
       <span className="pl-3 font-bold leading-[20px] font-sans">
         <h1>Stephen LH Chan</h1>
       </span>
