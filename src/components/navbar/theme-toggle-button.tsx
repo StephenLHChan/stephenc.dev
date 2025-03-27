@@ -1,25 +1,25 @@
-import { SunIcon, MoonIcon } from '@radix-ui/react-icons'
+import { motion } from 'motion/react'
 import { useTheme } from 'next-themes'
 
-import { Button } from '@/components/ui/button'
+import { MoonStar, Sun } from 'lucide-react'
 
 const ThemeToggleButton = () => {
   const { theme, setTheme } = useTheme()
 
   return (
-    <Button
-      variant="outline"
-      size="sm"
-      className="p-2"
+    <motion.button
+      className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors rounded-lg"
       aria-label="Toggle theme"
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       {theme === 'light' ? (
-        <MoonIcon className="w-4 h-4" />
+        <MoonStar className="w-4 h-4" />
       ) : (
-        <SunIcon className="w-4 h-4" />
+        <Sun className="w-4 h-4" />
       )}
-    </Button>
+    </motion.button>
   )
 }
 
