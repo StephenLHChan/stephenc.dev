@@ -2,48 +2,11 @@
 
 import { TypeAnimation } from 'react-type-animation'
 
-import SocialMediaIcon from '@/components/social-media-icon'
 import SectionTitle from '@/components/section-title'
 import BioItem from '@/components/bioItem'
 import Paragraph from '@/components/paragraph'
 import Section from '@/components/section'
 import ProfilePic from '@/components/profile-pic'
-
-import {
-  IoLogoLinkedin,
-  IoLogoGithub,
-  IoLogoInstagram,
-  IoLogoTwitter,
-  IoLogoFacebook
-} from 'react-icons/io5'
-
-const socialMediaList = [
-  {
-    type: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/stephenlhc/',
-    icon: IoLogoLinkedin
-  },
-  {
-    type: 'Github',
-    link: 'https://github.com/StephenLHChan/',
-    icon: IoLogoGithub
-  },
-  {
-    type: 'Instagram',
-    link: 'https://www.instagram.com/stephenc.3/',
-    icon: IoLogoInstagram
-  },
-  {
-    type: 'Twitter',
-    link: 'https://twitter.com/StephenLHChan',
-    icon: IoLogoTwitter
-  },
-  {
-    type: 'Facebook',
-    link: 'https://www.facebook.com/StephenLHChan',
-    icon: IoLogoFacebook
-  }
-]
 
 const bioItems = [
   {
@@ -166,17 +129,6 @@ const Home = () => {
             </a>
             {', '}Badminton
           </Paragraph>
-        </div>
-      </Section>
-
-      <Section delay={0.8}>
-        <SectionTitle>Know more about me</SectionTitle>
-        <div className="flex items-center justify-between opacity-80">
-          {socialMediaList.map(({ type, link, icon }) => {
-            return (
-              <SocialMediaIcon key={type} type={type} link={link} icon={icon} />
-            )
-          })}
         </div>
       </Section>
     </div>
