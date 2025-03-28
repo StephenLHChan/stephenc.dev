@@ -6,7 +6,7 @@ const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN
 
 const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token'
 const CURRENT_TRACK_ENDPOINT =
-  'https://api.spotify.com/v1/me/player/recently-played'
+  'https://api.spotify.com/v1/me/player/currently-playing'
 
 // Function to get a new access token using the refresh token
 const getAccessToken = async () => {
@@ -25,7 +25,6 @@ const getAccessToken = async () => {
       refresh_token: REFRESH_TOKEN!
     })
   })
-  console.log('response', response)
   return response.json()
 }
 
@@ -36,7 +35,6 @@ const getCurrentTrack = async (accessToken: string) => {
       Authorization: `Bearer ${accessToken}`
     }
   })
-  console.log('response', response)
   if (response.status === 204 || response.status > 400) {
     return null // No track is currently playing
   }
@@ -45,11 +43,10 @@ const getCurrentTrack = async (accessToken: string) => {
 }
 
 // Named export for the GET method
-export async function GET(req: NextRequest) {
+export async function GET(_: NextRequest) {
   try {
     const { access_token } = await getAccessToken()
     const currentTrack = await getCurrentTrack(access_token)
-    console.log('currentTrack', currentTrack)
     if (!currentTrack) {
       return NextResponse.json({ isPlaying: false }, { status: 200 })
     }
