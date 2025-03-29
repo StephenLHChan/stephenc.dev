@@ -2,11 +2,12 @@
 
 import { TypeAnimation } from 'react-type-animation'
 
-import SectionTitle from '@/components/section-title'
 import BioItem from '@/components/bioItem'
 import Paragraph from '@/components/paragraph'
-import Section from '@/components/section'
 import ProfilePic from '@/components/profile-pic'
+import Section from '@/components/section'
+import SectionTitle from '@/components/section-title'
+import Spotify from '@/components/spotify'
 
 const bioItems = [
   {
@@ -130,6 +131,9 @@ const Home = () => {
             {', '}Badminton
           </Paragraph>
         </div>
+      </Section>
+      <Section>
+        <Spotify />
       </Section>
     </div>
   )
