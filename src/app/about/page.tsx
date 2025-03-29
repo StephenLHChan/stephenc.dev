@@ -1,4 +1,8 @@
 import type { Metadata } from 'next'
+
+import Section from '@/components/section'
+
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import {
   Card,
   CardHeader,
@@ -6,7 +10,7 @@ import {
   CardDescription
 } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { Avatar, AvatarImage } from '@/components/ui/avatar'
+
 import { BriefcaseBusiness, GraduationCap } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -20,7 +24,7 @@ const AboutPage = () => {
   return (
     <div className="container mx-auto py-8">
       {/* About Me Section */}
-      <section className="flex flex-col md:flex-row items-start gap-6">
+      <Section className="flex flex-col md:flex-row items-start gap-6">
         {/* Left: Profile Picture */}
         <div className="w-full md:w-2/5 flex justify-center">
           <Avatar className="w-full h-full rounded-lg">
@@ -81,7 +85,7 @@ const AboutPage = () => {
             </p>
           </div>
         </div>
-      </section>
+      </Section>
       <Separator className="my-6" />
     </div>
   )
