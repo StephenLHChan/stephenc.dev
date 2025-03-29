@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useMemo } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 
 import useSpotifyData from '@/hooks/use-spotify-data'
