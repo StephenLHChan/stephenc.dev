@@ -131,6 +131,9 @@ const Home = () => {
           </Paragraph>
         </div>
       </Section>
+      <Section>
+        <Spotify />
+      </Section>
     </div>
   )
 }
