@@ -8,7 +8,10 @@ import ThemeToggleButton from './theme-toggle-button'
 import LinkItem from './link-item'
 import NavMenu from './nav-menu'
 
-const navItems = [{ path: '/projects', label: 'Projects' }]
+const navItems = [
+  { path: '/about', label: 'About' },
+  { path: '/projects', label: 'Projects' }
+]
 
 const Navbar = () => {
   const pathname = usePathname()
