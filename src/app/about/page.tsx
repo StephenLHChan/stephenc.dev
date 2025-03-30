@@ -124,7 +124,10 @@ const AboutPage = () => {
           {/* Cards for Experience and Education */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {cards.map((card, index) => (
-              <Card key={index} className="text-center bg-transparent">
+              <Card
+                key={index}
+                className="text-center bg-transparent transition-transform hover:scale-105"
+              >
                 <CardHeader>
                   <CardTitle className="flex flex-col items-center">
                     {card.icon}
@@ -175,7 +178,7 @@ const AboutPage = () => {
               {interests.map((interest, index) => (
                 <Card
                   key={index}
-                  className={`relative text-center rounded-lg shadow-md ${
+                  className={`relative text-center rounded-lg shadow-md transition-transform hover:scale-105 ${
                     interest.image
                       ? 'bg-cover bg-center'
                       : 'bg-gray-200 dark:bg-gray-800'

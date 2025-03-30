@@ -18,11 +18,13 @@ const TimelineItem = ({
       <span className="bg-muted absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full border">
         <Icon className="text-primary size-3" />
       </span>
-      <h3 className="flex items-center font-semibold">{title}</h3>
-      <time className="text-muted-foreground flex items-center gap-1.5 text-sm leading-none">
-        <ClockIcon className="size-3" /> {time}
-      </time>
-      <Paragraph className="text-muted-foreground">{description}</Paragraph>
+      <div className="transition-transform hover:scale-102">
+        <h3 className="flex items-center font-semibold">{title}</h3>
+        <time className="text-muted-foreground flex items-center gap-1.5 text-sm leading-none">
+          <ClockIcon className="size-3" /> {time}
+        </time>
+        <Paragraph className="text-muted-foreground">{description}</Paragraph>
+      </div>
     </li>
   )
 }
