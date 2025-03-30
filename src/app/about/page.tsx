@@ -36,10 +36,10 @@ const bioItem = [
   },
   {
     time: '2016',
-    title: 'Bachelor of Engineering in Computer Science',
+    title: 'BEng(Hons) in Computer Science',
     icon: GraduationCap,
     description:
-      'Completed Bachelor of Engineering in Computer Science at The Hong Kong University of Science and Technology (HKUST). One of the top universities in Asia.'
+      'Completed Bachelor of Engineering in Computer Science at The Hong Kong University of Science and Technology (HKUST), one of the top universities in Asia.'
   },
   {
     time: '2021',
@@ -50,7 +50,7 @@ const bioItem = [
   },
   {
     time: '2022',
-    title: 'Cloud Monitoring Engineer',
+    title: 'Software Engineer at BMO',
     icon: BriefcaseBusiness,
     description:
       'Started working as a Cloud Monitoring Engineer at Bank of Montreal (BMO), focusing on cloud infrastructure and monitoring solutions.'
