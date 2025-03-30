@@ -58,6 +58,21 @@ const bioItem = [
   }
 ]
 
+const interests: { title: string; description?: string; image?: string }[] = [
+  {
+    title: 'Coffee',
+    image: '/images/about/interest/coffee.jpeg'
+  },
+  {
+    title: 'Camping',
+    image: '/images/about/interest/camping.jpeg' // Replace with your image path
+  },
+  {
+    title: 'Photography',
+    image: '/images/photography.jpg' // Replace with your image path
+  }
+]
+
 const AboutPage = () => {
   const cards = [
     {
@@ -151,6 +166,57 @@ const AboutPage = () => {
       </Section>
       <Section delay={0.6}>
         <Separator />
+      </Section>
+      <Section className="my-6" delay={0.8}>
+        <div className="flex flex-col md:flex-row items-start gap-6">
+          {/* Left: Interests Content */}
+          <div className="w-full md:w-5/6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {interests.map((interest, index) => (
+                <Card
+                  key={index}
+                  className={`relative text-center rounded-lg shadow-md ${
+                    interest.image
+                      ? 'bg-cover bg-center'
+                      : 'bg-gray-200 dark:bg-gray-800'
+                  }`}
+                  style={
+                    interest.image
+                      ? { backgroundImage: `url('${interest.image}')` }
+                      : {}
+                  }
+                >
+                  {/* Overlay if there's a background image */}
+                  {interest.image && (
+                    <div className="absolute inset-0 bg-black/50 rounded-lg"></div>
+                  )}
+
+                  {/* Card Header */}
+                  <CardHeader
+                    className={`relative z-10 text-white ${
+                      !interest.description
+                        ? 'flex items-center justify-center h-full'
+                        : ''
+                    }`}
+                  >
+                    <CardTitle className="text-lg">{interest.title}</CardTitle>
+                    {interest.description && (
+                      <CardDescription>{interest.description}</CardDescription>
+                    )}
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Interests Label */}
+          <Separator orientation="vertical" />
+          <div className="w-full md:w-1/6 flex justify-center md:justify-start">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+              Interests
+            </h2>
+          </div>
+        </div>
       </Section>
     </div>
   )

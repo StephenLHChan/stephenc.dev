@@ -28,23 +28,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Section delay={0.5}>
-        <SectionTitle>Interest</SectionTitle>
-        <div>
-          <Paragraph>
-            Coffee,{' '}
-            <a
-              href="https://www.instagram.com/stepbymie"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-link hover:underline"
-            >
-              Photography
-            </a>
-            {', '}Badminton
-          </Paragraph>
-        </div>
-      </Section>
+
       <Section delay={1}>
         <Spotify />
       </Section>
