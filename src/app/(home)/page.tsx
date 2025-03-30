@@ -12,7 +12,7 @@ const Home = () => {
       <div className="flex flex-col md:flex-row">
         <div className="flex-grow text-4xl">
           <TypeAnimation
-            sequence={['hey!', 1000, 'this is Stephen...']}
+            sequence={['hey!', 1500, 'this is Stephen...']}
             wrapper="h1"
             cursor={true}
             repeat={0}
