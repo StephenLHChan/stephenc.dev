@@ -65,11 +65,11 @@ const interests: { title: string; description?: string; image?: string }[] = [
   },
   {
     title: 'Camping',
-    image: '/images/about/interest/camping.jpeg' // Replace with your image path
+    image: '/images/about/interest/camping.jpeg'
   },
   {
     title: 'Photography',
-    image: '/images/photography.jpg' // Replace with your image path
+    image: '/images/about/interest/photography.jpeg'
   }
 ]
 

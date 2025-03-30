@@ -2,10 +2,8 @@
 
 import { TypeAnimation } from 'react-type-animation'
 
-import Paragraph from '@/components/paragraph'
 import ProfilePic from '@/components/profile-pic'
 import Section from '@/components/section'
-import SectionTitle from '@/components/section-title'
 import Spotify from '@/components/spotify'
 
 const Home = () => {
