@@ -127,7 +127,19 @@ const AboutPage = () => {
         <Separator className="my-6" />
       </Section>
       <Section delay={0.4}>
-        <Timeline items={bioItem} />
+        <div className="flex flex-col md:flex-row items-start gap-6">
+          {/* Left: Timeline Label */}
+          <div className="w-full md:w-1/6 flex justify-center md:justify-start">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+              Timeline
+            </h2>
+          </div>
+
+          {/* Right: Timeline Component */}
+          <div className="w-full md:w-5/6">
+            <Timeline items={bioItem} />
+          </div>
+        </div>
       </Section>
     </div>
   )

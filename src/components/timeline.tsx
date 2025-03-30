@@ -1,4 +1,5 @@
 import { ClockIcon } from 'lucide-react'
+import Paragraph from './paragraph'
 
 interface TimelineItemProps {
   icon: React.ElementType
@@ -21,7 +22,7 @@ const TimelineItem = ({
       <time className="text-muted-foreground flex items-center gap-1.5 text-sm leading-none">
         <ClockIcon className="size-3" /> {time}
       </time>
-      <p className="text-muted-foreground">{description}</p>
+      <Paragraph className="text-muted-foreground">{description}</Paragraph>
     </li>
   )
 }
