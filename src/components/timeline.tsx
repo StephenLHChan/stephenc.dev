@@ -14,7 +14,7 @@ const TimelineItem = ({
   description
 }: TimelineItemProps) => {
   return (
-    <li className="ms-6 mb-10 space-y-2">
+    <li className="ms-6 mb-10 last:mb-2 space-y-2">
       <span className="bg-muted absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full border">
         <Icon className="text-primary size-3" />
       </span>

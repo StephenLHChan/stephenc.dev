@@ -149,6 +149,9 @@ const AboutPage = () => {
           </div>
         </div>
       </Section>
+      <Section delay={0.6}>
+        <Separator />
+      </Section>
     </div>
   )
 }
