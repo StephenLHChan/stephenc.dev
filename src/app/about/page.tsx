@@ -59,13 +59,44 @@ const bioItem = [
 ]
 
 const AboutPage = () => {
+  const cards = [
+    {
+      title: 'Experience',
+      icon: <BriefcaseBusiness className="w-10 h-10 mb-2" />,
+      description: (
+        <>
+          2+ years
+          <br />
+          Software Engineer
+        </>
+      )
+    },
+    {
+      title: 'Education',
+      icon: <GraduationCap className="w-10 h-10 mb-2" />,
+      description: (
+        <>
+          BEng(Hons) in Computer Science from{' '}
+          <a
+            href="https://www.hkust.edu.hk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            HKUST
+          </a>
+        </>
+      )
+    }
+  ]
+
   return (
     <div className="container mx-auto py-8">
       {/* About Me Section */}
       <Section className="flex flex-col md:flex-row items-start gap-6">
         {/* Left: Profile Picture */}
         <div className="w-full md:w-2/5 flex justify-center">
-          <Avatar className="w-full h-full rounded-lg">
+          <Avatar className="w-full h-full rounded-2xl">
             <AvatarImage
               src="/images/about/profile-pic.jpeg"
               alt="Stephen LH Chan"
@@ -77,41 +108,17 @@ const AboutPage = () => {
         <div className="w-full md:w-3/5 space-y-6">
           {/* Cards for Experience and Education */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Experience Card */}
-            <Card className="text-center bg-transparent">
-              <CardHeader>
-                <CardTitle className="flex flex-col items-center">
-                  <BriefcaseBusiness className="w-10 h-10 mb-2" />
-                  <h2 className="text-lg">Experience</h2>
-                </CardTitle>
-                <CardDescription>
-                  2+ years
-                  <br />
-                  Software Engineer
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            {/* Education Card */}
-            <Card className="text-center bg-transparent">
-              <CardHeader>
-                <CardTitle className="flex flex-col items-center">
-                  <GraduationCap className="w-10 h-10 mb-2" />
-                  <h2 className="text-lg">Education</h2>
-                </CardTitle>
-                <CardDescription>
-                  BEng(Hons) in Computer Science from{' '}
-                  <a
-                    href="https://www.hkust.edu.hk/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    HKUST
-                  </a>
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            {cards.map((card, index) => (
+              <Card key={index} className="text-center bg-transparent">
+                <CardHeader>
+                  <CardTitle className="flex flex-col items-center">
+                    {card.icon}
+                    <h2 className="text-lg">{card.title}</h2>
+                  </CardTitle>
+                  <CardDescription>{card.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
           </div>
 
           {/* Description */}
