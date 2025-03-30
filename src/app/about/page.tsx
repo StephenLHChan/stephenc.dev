@@ -29,31 +29,31 @@ export const metadata: Metadata = {
 const bioItem = [
   {
     time: '1992',
-    title: 'Born in Hong Kong',
+    title: 'Born in Hong Kong 🇭🇰',
     icon: Cake,
     description:
-      'Born in Hong Kong, Stephen has always been passionate about technology and innovation.'
+      'Born in Hong Kong, where dim sum is life, and technology was just an excuse to avoid doing chores. I’ve been tinkering with gadgets and dreaming of innovation ever since.'
   },
   {
     time: '2016',
-    title: 'BEng(Hons) in Computer Science',
+    title: 'BEng(Hons) in Computer Science | HKUST',
     icon: GraduationCap,
     description:
-      'Completed Bachelor of Engineering in Computer Science at The Hong Kong University of Science and Technology (HKUST), one of the top universities in Asia.'
+      'Graduated with a BEng(Hons) in Computer Science from HKUST, one of Asia’s top universities. My parents finally stopped asking, "When will you get a real job?"'
   },
   {
     time: '2021',
-    title: 'Relocated to Toronto, ON',
+    title: 'Relocated to Toronto, ON 🇨🇦',
     icon: MapPinCheckInside,
     description:
-      'Relocated to Toronto, Ontario, Canada, to explore new opportunities and experiences.'
+      'Moved to Toronto, ON, in search of maple syrup, snowstorms, and a new adventure. Turns out, the snow is colder than expected, but the opportunities are warmer!'
   },
   {
     time: '2022',
-    title: 'Software Engineer at BMO',
+    title: 'Software Engineer | BMO',
     icon: BriefcaseBusiness,
     description:
-      'Started working as a Cloud Monitoring Engineer at Bank of Montreal (BMO), focusing on cloud infrastructure and monitoring solutions.'
+      'Joined BMO as a Software Engineer, where I keep an eye on the clouds — not the fluffy ones in the sky, but the ones that power the internet. I’m all about cloud innovation and making sure our systems run smoother than a fresh jar of peanut butter.'
   }
 ]
 
