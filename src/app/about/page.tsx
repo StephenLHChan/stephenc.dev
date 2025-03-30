@@ -33,28 +33,28 @@ const bioItem = [
     title: 'Born in Hong Kong 🇭🇰',
     icon: Cake,
     description:
-      'Born in Hong Kong, where dim sum is life, and technology was just an excuse to avoid doing chores. I’ve been tinkering with gadgets and dreaming of innovation ever since.'
+      'Born in Hong Kong, where dim sum is life 🥟, and technology was just an excuse to avoid doing chores. I’ve been tinkering with gadgets and dreaming of innovation ever since.'
   },
   {
     time: '2016',
-    title: 'BEng(Hons) in Computer Science | HKUST',
+    title: 'BEng(Hons) in Computer Science | HKUST 🎓',
     icon: GraduationCap,
     description:
-      'Graduated with a BEng(Hons) in Computer Science from HKUST, one of Asia’s top universities. My parents finally stopped asking, "When will you get a real job?"'
+      'Graduated with a BEng(Hons) in Computer Science from HKUST, one of Asia’s top universities 🌏. My parents finally stopped asking, "When will you get a real job?" 😅'
   },
   {
     time: '2021',
     title: 'Relocated to Toronto, ON 🇨🇦',
     icon: MapPinCheckInside,
     description:
-      'Moved to Toronto, ON, in search of maple syrup, snowstorms, and a new adventure. Turns out, the snow is colder than expected, but the opportunities are warmer!'
+      'Moved to Toronto, ON, in search of maple syrup 🍁, snowstorms ❄️, and a new adventure 🚀. Turns out, the snow is colder than expected 🥶, but the opportunities are warmer!'
   },
   {
     time: '2022',
-    title: 'Software Engineer | BMO',
+    title: 'Software Engineer | BMO 💻',
     icon: BriefcaseBusiness,
     description:
-      'Joined BMO as a Software Engineer, where I keep an eye on the clouds — not the fluffy ones in the sky, but the ones that power the internet. I’m all about cloud innovation and making sure our systems run smoother than a fresh jar of peanut butter.'
+      'Joined BMO as a Software Engineer, where I keep an eye on the clouds ☁️—not the fluffy ones in the sky, but the ones that power the internet 🌐. I’m all about cloud innovation and making sure our systems run smoother than a fresh jar of peanut butter.'
   }
 ]
 
