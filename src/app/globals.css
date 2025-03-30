@@ -139,17 +139,19 @@
   /* body {
     @apply bg-background text-foreground;
   } */
-}
-
-body {
-  font-family: 'M PLUS 1P', sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'M PLUS Code Latin', sans-serif;
+  body {
+    font-family: 'M PLUS 1P', sans-serif;
+    @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'M PLUS Code Latin', sans-serif;
+  }
+  a {
+    @apply hover:text-teal-500 dark:hover:text-[#ff63c3] hover:underline;
+  }
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import Paragraph from '@/components/paragraph'
 import Section from '@/components/section'
 import Timeline from '@/components/timeline'
 
@@ -115,11 +116,11 @@ const AboutPage = () => {
 
           {/* Description */}
           <div>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">
+            <Paragraph className="mt-2 text-gray-600 dark:text-gray-400">
               Software Engineer | Cloud Innovator | Committed to “Keep Coding,”
               Continuous Learning, and Driving Innovation | Always Striving to
               Become a Great Software Engineer
-            </p>
+            </Paragraph>
           </div>
         </div>
       </Section>

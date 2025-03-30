@@ -28,19 +28,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Section delay={0.2}>
-        <SectionTitle>Summary</SectionTitle>
-        <div>
-          <Paragraph>
-            Hello! I am Stephen. I graduated with Bachelor of Engineering in
-            Computer Science from The Hong Kong University of Science and
-            Technology with more than four years of experience in business
-            analysis and quality assurance in IT projects.
-          </Paragraph>
-          <br />
-        </div>
-      </Section>
-      <Section delay={0.6}>
+      <Section delay={0.5}>
         <SectionTitle>Interest</SectionTitle>
         <div>
           <Paragraph>
