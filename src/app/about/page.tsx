@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import Section from '@/components/section'
+import Timeline from '@/components/timeline'
 
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import {
@@ -11,7 +12,12 @@ import {
 } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 
-import { BriefcaseBusiness, GraduationCap } from 'lucide-react'
+import {
+  BriefcaseBusiness,
+  Cake,
+  GraduationCap,
+  MapPinCheckInside
+} from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'About - Stephen LH Chan',
@@ -19,6 +25,37 @@ export const metadata: Metadata = {
     title: 'About - Stephen LH Chan'
   }
 }
+
+const bioItem = [
+  {
+    time: '1992',
+    title: 'Born in Hong Kong',
+    icon: Cake,
+    description:
+      'Born in Hong Kong, Stephen has always been passionate about technology and innovation.'
+  },
+  {
+    time: '2016',
+    title: 'Bachelor of Engineering in Computer Science',
+    icon: GraduationCap,
+    description:
+      'Completed Bachelor of Engineering in Computer Science at The Hong Kong University of Science and Technology (HKUST). One of the top universities in Asia.'
+  },
+  {
+    time: '2021',
+    title: 'Relocated to Toronto, ON',
+    icon: MapPinCheckInside,
+    description:
+      'Relocated to Toronto, Ontario, Canada, to explore new opportunities and experiences.'
+  },
+  {
+    time: '2022',
+    title: 'Cloud Monitoring Engineer',
+    icon: BriefcaseBusiness,
+    description:
+      'Started working as a Cloud Monitoring Engineer at Bank of Montreal (BMO), focusing on cloud infrastructure and monitoring solutions.'
+  }
+]
 
 const AboutPage = () => {
   return (
@@ -86,7 +123,12 @@ const AboutPage = () => {
           </div>
         </div>
       </Section>
-      <Separator className="my-6" />
+      <Section delay={0.2}>
+        <Separator className="my-6" />
+      </Section>
+      <Section delay={0.4}>
+        <Timeline items={bioItem} />
+      </Section>
     </div>
   )
 }
