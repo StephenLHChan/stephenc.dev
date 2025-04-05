@@ -3,6 +3,8 @@
 import NextLink from 'next/link'
 import NextImage, { StaticImageData } from 'next/image'
 import { ChevronRight } from 'lucide-react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { cn } from '@/lib/utils'
 
 export const ProjectItem = ({
   id,
@@ -53,12 +55,9 @@ export const ProjectItem = ({
             {tags && tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-4">
                 {tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-medium px-2 py-1 rounded"
-                  >
+                  <TechnologyTag key={index} size="xs">
                     {tag}
-                  </span>
+                  </TechnologyTag>
                 ))}
               </div>
             )}
@@ -86,10 +85,32 @@ export const Breadcrumb = ({ children }: { children: React.ReactNode }) => (
 )
 
 export const Tag = ({ children }: { children: React.ReactNode }) => (
-  <span className="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 text-sm font-medium px-2 py-1 rounded mr-2">
+  <span className="inline-block bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-100 text-sm font-medium px-2 py-1 rounded mr-2">
     {children}
   </span>
 )
+
+const technologyTagVariants = cva(
+  'inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium px-2 py-1 rounded',
+  {
+    variants: {
+      size: {
+        default: 'text-sm',
+        xs: 'text-xs'
+      }
+    },
+    defaultVariants: {
+      size: 'default'
+    }
+  }
+)
+
+export const TechnologyTag = ({
+  size,
+  children
+}: { children: React.ReactNode } & VariantProps<
+  typeof technologyTagVariants
+>) => <span className={cn(technologyTagVariants({ size }))}>{children}</span>
 
 export const ProjectImage = ({
   src,

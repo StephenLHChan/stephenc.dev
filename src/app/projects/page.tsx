@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 
 import Section from '@/components/section'
-import SectionTitle from '@/components/section-title'
-import { ProjectItem } from '@/components/project-item'
+import { ProjectItem } from '@/components/project/project-item'
+import { resumateProject } from '@/data/projects/resumate'
 
-import thumbCrypto from '/public/images/projects/thumbnail_crypto.png'
 import thumbPriceChecker from '/public/images/projects/thumbnail_pricechecker.png'
+import { cryptoDashboard } from '@/data/projects/crypto-dashboard'
 
 export const metadata: Metadata = {
   title: 'Projects - Stephen LH Chan',
@@ -17,16 +17,23 @@ export const metadata: Metadata = {
 const ProjectPage = () => {
   return (
     <div className="container mx-auto px-4">
-      <SectionTitle>Projects</SectionTitle>
       <Section delay={0.2}>
         <div className="mt-6 space-y-8">
           <ProjectItem
-            id="crypto-dashboard"
-            title="Crypto Dashboard"
-            description="A dashboard to display real-time data and graph of cryptocurrency"
-            thumbnail={thumbCrypto}
-            year="2022"
-            tags={['Python', 'Pandas', 'Dash']}
+            id={resumateProject.id}
+            title={resumateProject.title}
+            description={resumateProject.shortDescription}
+            thumbnail={resumateProject.thumbnail}
+            tags={resumateProject.technologies}
+            year={resumateProject.yearFrom}
+          />
+          <ProjectItem
+            id={cryptoDashboard.id}
+            title={cryptoDashboard.title}
+            description={cryptoDashboard.shortDescription}
+            thumbnail={cryptoDashboard.thumbnail}
+            year={cryptoDashboard.yearFrom}
+            tags={cryptoDashboard.technologies}
           />
           <ProjectItem
             id="#"
