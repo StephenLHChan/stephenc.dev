@@ -57,7 +57,7 @@ const useSpotifyData = () => {
     }
 
     fetchSpotifyData()
-      .catch(err => {
+      .catch(_ => {
         setError('An unexpected error occurred while fetching Spotify data.')
       })
       .finally(() => {
