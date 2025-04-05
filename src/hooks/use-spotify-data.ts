@@ -56,9 +56,13 @@ const useSpotifyData = () => {
       }
     }
 
-    fetchSpotifyData().then(() => {
-      setIsLoading(false)
-    })
+    fetchSpotifyData()
+      .catch(err => {
+        setError('An unexpected error occurred while fetching Spotify data.')
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }, [])
 
   return { currentTrack, recentTracks, topTracks, error, isLoading }
