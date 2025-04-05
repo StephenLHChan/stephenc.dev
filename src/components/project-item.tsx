@@ -1,33 +1,62 @@
+'use client'
+
 import NextLink from 'next/link'
-import NextImage from 'next/image'
+import NextImage, { StaticImageData } from 'next/image'
 import { ChevronRight } from 'lucide-react'
 
 export const ProjectItem = ({
   id,
   title,
   description,
-  thumbnail
+  thumbnail,
+  tags = [],
+  year
 }: {
   id: string
   title: string
   description: string
-  thumbnail
+  thumbnail: StaticImageData
+  tags?: string[]
+  year?: string
 }) => {
   return (
-    <div className="w-full text-center mb-6">
+    <div className="w-full mb-8">
       <NextLink href={`/projects/${id}`} passHref>
-        <div className="rounded-lg border overflow-hidden hover:shadow-lg transition-shadow">
-          <NextImage
-            src={thumbnail}
-            alt={title}
-            width={1080}
-            height={720}
-            className="object-cover w-full h-full"
-            placeholder="blur"
-          />
-          <div className="p-4">
-            <h3 className="mt-2 text-lg font-bold">{title}</h3>
-            <p className="text-sm text-gray-600">{description}</p>
+        <div className="group relative rounded-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 bg-white">
+          <div className="relative aspect-video overflow-hidden">
+            <NextImage
+              src={thumbnail}
+              alt={title}
+              width={1080}
+              height={720}
+              className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+              priority
+            />
+            {/* <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300" /> */}
+          </div>
+
+          <div className="p-6">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-xl font-bold text-gray-900 group-hover:text-teal-600 transition-colors">
+                {title}
+              </h3>
+              {year && <span className="text-sm text-gray-500">{year}</span>}
+            </div>
+
+            <p className="text-gray-600 mb-4">{description}</p>
+
+            {tags && tags.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                {tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="inline-block bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </NextLink>
@@ -53,13 +82,19 @@ export const Tag = ({ children }: { children: React.ReactNode }) => (
   </span>
 )
 
-export const ProjectImage = ({ src, alt }: { src; alt: string }) => (
+export const ProjectImage = ({
+  src,
+  alt
+}: {
+  src: StaticImageData
+  alt: string
+}) => (
   <NextImage
     src={src}
     width={1080}
     height={720}
     alt={alt}
     className="rounded-lg w-full mb-4"
-    // placeholder="blur"
+    priority
   />
 )
