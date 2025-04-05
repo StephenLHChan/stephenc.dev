@@ -15,6 +15,7 @@ const useSpotifyData = () => {
   const [recentTracks, setRecentTracks] = useState<Track[]>([])
   const [topTracks, setTopTracks] = useState<Track[]>([])
   const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const fetchSpotifyData = async () => {
@@ -55,10 +56,12 @@ const useSpotifyData = () => {
       }
     }
 
-    fetchSpotifyData()
+    fetchSpotifyData().then(() => {
+      setIsLoading(false)
+    })
   }, [])
 
-  return { currentTrack, recentTracks, topTracks, error }
+  return { currentTrack, recentTracks, topTracks, error, isLoading }
 }
 
 export default useSpotifyData

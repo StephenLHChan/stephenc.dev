@@ -9,7 +9,8 @@ import FadeIn from '@/components/fade-in'
 type TrackListType = 'recent' | 'top'
 
 const Spotify = () => {
-  const { currentTrack, recentTracks, topTracks, error } = useSpotifyData()
+  const { currentTrack, recentTracks, topTracks, error, isLoading } =
+    useSpotifyData()
   const [activeList, setActiveList] = useState<TrackListType>('recent')
   const tracksRef = useRef<HTMLDivElement>(null)
 
@@ -51,6 +52,14 @@ const Spotify = () => {
     }
   }
 
+  if (isLoading) {
+    return (
+      <div className="w-full h-60 flex items-center justify-center">
+        Loading Spotify data...
+      </div>
+    )
+  }
+
   if (error) {
     return (
       <p className="text-red-500">
@@ -63,7 +72,7 @@ const Spotify = () => {
     <div className="w-full">
       {/* Header with title and buttons */}
       <div className="mb-4">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
           <p className="text-lg font-semibold">
             {currentTrack
               ? 'Now Playing'
@@ -86,9 +95,9 @@ const Spotify = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row md:gap-4">
+      <div className="flex flex-col md:flex-row md:gap-6">
         {/* Main Track Display */}
-        <div className="w-full md:w-1/2 mb-4 md:mb-0 bg-transparent">
+        <div className="w-full md:w-1/2 mb-6 md:mb-0">
           <AnimatePresence mode="sync">
             <motion.div
               key={displayTrack?.url}
@@ -96,28 +105,29 @@ const Spotify = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="bg-transparent"
             >
               {displayTrack && (
                 <>
                   {/* Mobile View */}
-                  <div className="w-full sm:hidden rounded-xl overflow-hidden bg-transparent">
+                  <div className="w-full sm:hidden rounded-xl overflow-hidden">
                     <iframe
                       title="Spotify Web Player"
-                      className="w-full h-[80px] bg-transparent"
+                      className="w-full h-[80px]"
                       src={displayTrack.embedUrl}
                       allow="encrypted-media"
                       frameBorder="0"
+                      loading="lazy"
                     />
                   </div>
                   {/* Desktop View */}
-                  <div className="hidden sm:block w-full rounded-3xl overflow-hidden bg-transparent">
+                  <div className="hidden sm:block w-full rounded-3xl overflow-hidden">
                     <iframe
                       title="Spotify Web Player"
-                      className="w-full h-[352px] bg-transparent"
+                      className="w-full h-[352px]"
                       src={displayTrack.embedUrl}
                       allow="encrypted-media"
                       frameBorder="0"
+                      loading="lazy"
                     />
                   </div>
                 </>
@@ -138,13 +148,14 @@ const Spotify = () => {
             >
               <div className="grid gap-3">
                 {tracksList.map((track, index) => (
-                  <FadeIn key={index} delay={1 + index * 0.3}>
+                  <FadeIn key={track.url || index} delay={(index + 1) * 0.2}>
                     <iframe
-                      title={`Spotify Track ${index}`}
-                      className="w-full rounded-2xl overflow-hidden bg-transparent"
+                      title={`Spotify Track ${track.name || index}`}
+                      className="w-full rounded-2xl overflow-hidden"
                       src={track.embedUrl}
                       height={80}
                       allow="encrypted-media"
+                      loading="lazy"
                     />
                   </FadeIn>
                 ))}
@@ -172,6 +183,8 @@ const TabButton = ({
       onClick={onClick}
       variant={isActive ? 'secondary' : 'ghost'}
       className="px-3 py-1.5 text-sm"
+      aria-pressed={isActive}
+      aria-label={`Show ${label}`}
     >
       {label}
     </Button>
