@@ -5,8 +5,8 @@ const ProfilePic = () => {
     <Image
       src="/images/profile-pic.jpeg"
       alt="Profile image"
-      width={120}
-      height={120}
+      width={180}
+      height={180}
       className="rounded-full"
     />
   )

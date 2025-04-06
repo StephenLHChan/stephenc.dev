@@ -21,7 +21,7 @@ const Home = () => {
           />
         </div>
         <div className="flex-shrink-0 mt-4 md:mt-0 md:ml-6 text-center">
-          <div className="border-3 border-white/80 w-30 h-30 inline-block rounded-full overflow-hidden">
+          <div className="border-3 border-black/80 dark:border-white/80 w-45 h-45 inline-block rounded-full overflow-hidden">
             <ProfilePic />
           </div>
         </div>
