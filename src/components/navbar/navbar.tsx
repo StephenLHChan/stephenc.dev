@@ -10,7 +10,8 @@ import NavMenu from './nav-menu'
 
 const navItems = [
   { path: '/about', label: 'About' },
-  { path: '/projects', label: 'Projects' }
+  { path: '/projects', label: 'Projects' },
+  { path: '/photos', label: 'Photos' }
 ]
 
 const Navbar = () => {
