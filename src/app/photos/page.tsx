@@ -1,5 +1,3 @@
-'use client'
-
 import PhotoGallery from '@/components/photo-gallery'
 import { Metadata } from 'next'
 
