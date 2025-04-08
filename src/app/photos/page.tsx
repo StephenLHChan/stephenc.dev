@@ -1,8 +1,13 @@
 import PhotoGallery from '@/components/photo-gallery'
 import { Metadata } from 'next'
 
-// Sample photos data - replace with your actual photos
-const photos = [
+interface Photo {
+  src: string
+  alt: string
+  caption?: string
+}
+
+const photos: Photo[] = [
   {
     src: '/images/photos/photo1.jpeg',
     alt: 'Photo 1'
@@ -30,7 +35,8 @@ const photos = [
   },
   {
     src: '/images/photos/photo7.jpeg',
-    alt: 'Photo 7'
+    alt: 'Photo 7',
+    caption: 'I guess... no one likes COVID'
   },
   {
     src: '/images/photos/photo8.jpeg',
@@ -50,7 +56,8 @@ const photos = [
   },
   {
     src: '/images/photos/photo12.jpeg',
-    alt: 'Photo 12'
+    alt: 'Photo 12',
+    caption: 'the WOREST day in the most beautiful town in the world 😅'
   },
   {
     src: '/images/photos/photo13.jpeg',
@@ -58,18 +65,28 @@ const photos = [
   }
 ]
 
+const shuffle = (array: Photo[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
+}
+
 export const metadata: Metadata = {
   title: 'Photos',
   description: 'A collection of my favorite moments and memories.'
 }
 
 export default function PhotosPage() {
+  const shuffledPhotos = shuffle(photos)
+
   return (
     <div className="container mx-auto px-4 py-8">
       <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
         A collection of my favorite moments and memories.
       </p>
-      <PhotoGallery photos={photos} />
+      <PhotoGallery photos={shuffledPhotos} />
     </div>
   )
 }
