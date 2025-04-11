@@ -74,7 +74,7 @@ const shuffle = (array: Photo[]) => {
 }
 
 export const metadata: Metadata = {
-  title: 'Photos',
+  title: 'Photos - Stephen LH Chan',
   description: 'A collection of my favorite moments and memories.'
 }
 
