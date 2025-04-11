@@ -46,7 +46,7 @@ src/
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/stephen-homepage.git
+git clone https://github.com/StephenLHChan/stephenc.info.git
 cd stephen-homepage
 ```
 
