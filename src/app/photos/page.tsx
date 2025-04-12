@@ -65,28 +65,18 @@ const photos: Photo[] = [
   }
 ]
 
-const shuffle = (array: Photo[]) => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[array[i], array[j]] = [array[j], array[i]]
-  }
-  return array
-}
-
 export const metadata: Metadata = {
   title: 'Photos - Stephen LH Chan',
   description: 'A collection of my favorite moments and memories.'
 }
 
 export default function PhotosPage() {
-  const shuffledPhotos = shuffle(photos)
-
   return (
     <div className="container mx-auto px-4 py-8">
       <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
         A collection of my favorite moments and memories.
       </p>
-      <PhotoGallery photos={shuffledPhotos} />
+      <PhotoGallery photos={photos} shuffle />
     </div>
   )
 }

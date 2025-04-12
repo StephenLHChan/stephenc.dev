@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
@@ -13,15 +13,28 @@ interface Photo {
 
 interface PhotoGalleryProps {
   photos: Photo[]
+  shuffle?: boolean
 }
 
-const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
+const PhotoGallery = ({ photos, shuffle }: PhotoGalleryProps) => {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
+  const [displayPhotos, setDisplayPhotos] = useState<Photo[]>(photos)
+
+  useEffect(() => {
+    if (shuffle) {
+      const shuffled = [...photos]
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+      }
+      setDisplayPhotos(shuffled)
+    }
+  }, [photos, shuffle])
 
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {photos.map((photo, index) => (
+        {displayPhotos.map((photo, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
