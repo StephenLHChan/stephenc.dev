@@ -7,7 +7,7 @@ import {
   IoLogoTwitter,
   IoLogoFacebook
 } from 'react-icons/io5'
-import { SiLeetcode } from 'react-icons/si'
+import { SiLeetcode, SiSpotify } from 'react-icons/si'
 import SocialMediaIcon from './social-media-icon'
 
 const socialMediaList = [
@@ -25,6 +25,11 @@ const socialMediaList = [
     type: 'LeetCode',
     link: 'https://leetcode.com/u/stephenlhc/',
     icon: SiLeetcode
+  },
+  {
+    type: 'Spotify',
+    link: 'https://open.spotify.com/user/31w3ftuolebhplydi3ioac37wq3e?si=127a8ad2c7b24e72',
+    icon: SiSpotify
   },
   {
     type: 'Instagram',
