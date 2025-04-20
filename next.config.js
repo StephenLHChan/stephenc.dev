@@ -11,6 +11,11 @@ module.exports = {
         source: '/GitHub',
         destination: 'https://github.com/StephenLHChan',
         permanent: false
+      },
+      {
+        source: '/LeetCode',
+        destination: 'https://leetcode.com/u/stephenlhc/',
+        permanent: false
       }
     ]
   }
