@@ -7,6 +7,7 @@ import {
   IoLogoTwitter,
   IoLogoFacebook
 } from 'react-icons/io5'
+import { SiLeetcode } from 'react-icons/si'
 import SocialMediaIcon from './social-media-icon'
 
 const socialMediaList = [
@@ -19,6 +20,11 @@ const socialMediaList = [
     type: 'Github',
     link: 'https://github.com/StephenLHChan/',
     icon: IoLogoGithub
+  },
+  {
+    type: 'LeetCode',
+    link: 'https://leetcode.com/u/stephenlhc/',
+    icon: SiLeetcode
   },
   {
     type: 'Instagram',
