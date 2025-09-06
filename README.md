@@ -2,7 +2,7 @@
 
 A modern, responsive personal website built with Next.js and TypeScript. This project serves as my digital portfolio and personal space on the web.
 
-🌐 Live at: [https://www.stephenc.info](https://www.stephenc.info)
+🌐 Live at: [https://www.stephenc.dev](https://www.stephenc.dev)
 
 ## 🚀 Features
 
