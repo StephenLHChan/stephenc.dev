@@ -169,11 +169,18 @@ export function analyzeError(
   }
 }
 
-export function shouldRetry(
+async function handleRetryableError(attemptCount: number): Promise<boolean> {
+  // Exponential backoff for retryable errors
+  const delay = Math.min(1000 * Math.pow(2, attemptCount), 10000) // Max 10 seconds
+  await new Promise(resolve => setTimeout(resolve, delay))
+  return true
+}
+
+export async function shouldRetry(
   error: ErrorDetails,
   attemptCount: number,
   maxRetries: number = 3
-): boolean {
+): Promise<boolean> {
   if (attemptCount >= maxRetries) {
     return false
   }
@@ -182,9 +189,7 @@ export function shouldRetry(
     return false
   }
 
-  // Exponential backoff for retryable errors
-  const delay = Math.min(1000 * Math.pow(2, attemptCount), 10000) // Max 10 seconds
-  return new Promise(resolve => setTimeout(resolve, delay)).then(() => true)
+  return handleRetryableError(attemptCount)
 }
 
 export function getErrorMessage(error: ErrorDetails): string {
