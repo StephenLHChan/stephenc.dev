@@ -7,12 +7,20 @@
     "build": "next build",
     "start": "next start",
     "prettier": "prettier --write .",
-    "lint": "next lint"
+    "lint": "next lint",
+    "setup-aws": "./scripts/setup-aws-s3.sh",
+    "validate-aws": "./scripts/validate-aws-setup.sh",
+    "upload-photos": "./scripts/upload-photos.sh",
+    "migrate-photos": "./scripts/migrate-photos-to-s3.sh",
+    "create-samples": "./scripts/create-sample-photos.sh",
+    "verify-migration": "./scripts/verify-s3-migration.sh"
   },
   "keywords": [],
   "author": "Stephen LH Chan",
   "license": "MIT",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.883.0",
+    "@aws-sdk/s3-request-presigner": "^3.883.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@hookform/resolvers": "^4.1.3",

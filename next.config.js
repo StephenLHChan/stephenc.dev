@@ -1,5 +1,15 @@
 module.exports = {
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'stephenc-dev-photos.s3.us-east-1.amazonaws.com',
+        port: '',
+        pathname: '/photos/**'
+      }
+    ]
+  },
   async redirects() {
     return [
       {
