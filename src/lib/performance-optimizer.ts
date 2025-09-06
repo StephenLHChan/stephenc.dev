@@ -1,4 +1,4 @@
-import { Photo } from '@/types/s3'
+import { Photo, PhotosAPIResponse } from '@/types/s3'
 
 export interface PerformanceMetrics {
   loadTime: number
@@ -229,12 +229,12 @@ export class EnhancedPhotoCache {
     let oldestKey = ''
     let oldestTime = Date.now()
 
-    for (const [key, value] of this.cache.entries()) {
+    this.cache.forEach((value, key) => {
       if (value.timestamp < oldestTime) {
         oldestTime = value.timestamp
         oldestKey = key
       }
-    }
+    })
 
     if (oldestKey) {
       this.cache.delete(oldestKey)
