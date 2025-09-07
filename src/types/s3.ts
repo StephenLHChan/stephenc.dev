@@ -22,6 +22,9 @@ export interface S3PhotoService {
   listPhotos(): Promise<Photo[]>
   getPhotoMetadata(_key: string): Promise<PhotoMetadata>
   generateSignedUrl(_key: string): Promise<string>
+  listSubfolders(): Promise<Subfolder[]>
+  listPhotosInSubfolder(_subfolderName: string): Promise<Photo[]>
+  getSubfolderCoverImage(_subfolderName: string): Promise<string | null>
 }
 
 export interface Photo {
@@ -33,6 +36,20 @@ export interface Photo {
 
 export interface PhotosAPIResponse {
   photos: Photo[]
+  error?: string
+  cached?: boolean
+}
+
+export interface Subfolder {
+  name: string
+  displayName: string
+  coverImageUrl?: string
+  photoCount: number
+  path: string
+}
+
+export interface SubfoldersAPIResponse {
+  subfolders: Subfolder[]
   error?: string
   cached?: boolean
 }

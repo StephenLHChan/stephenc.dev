@@ -1,4 +1,5 @@
 import PhotoGalleryContainer from '@/components/photo-gallery-container'
+import SubfolderNavigation from '@/components/subfolder-navigation'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -12,6 +13,11 @@ export default function PhotosPage() {
       <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
         A collection of my favorite moments and memories.
       </p>
+
+      {/* Subfolder Navigation */}
+      <SubfolderNavigation className="mb-12" />
+
+      {/* Main Photo Gallery */}
       <PhotoGalleryContainer shuffle />
     </div>
   )
