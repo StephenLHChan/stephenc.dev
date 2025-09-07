@@ -5,7 +5,7 @@ import {
   performanceOptimizer,
   EnhancedPhotoCache
 } from './performance-optimizer'
-import { Photo, PhotosAPIResponse } from '@/types/s3'
+import { Photo, PhotosAPIResponse, SubfoldersAPIResponse } from '@/types/s3'
 
 // Hardcoded fallback photos (from current implementation)
 const FALLBACK_PHOTOS: Photo[] = [
@@ -229,8 +229,106 @@ export function getCacheStats() {
   return enhancedCache.getStats()
 }
 
+// Subfolder cache
+let subfolderCache: SubfoldersAPIResponse | null = null
+let subfolderCacheTimestamp: number = 0
+
+export async function getSubfolders(): Promise<SubfoldersAPIResponse> {
+  const startTime = Date.now()
+
+  // Skip enhanced cache for subfolders (different type)
+  // Go directly to legacy cache
+
+  // Fallback to legacy cache
+  const now = Date.now()
+  if (subfolderCache && now - subfolderCacheTimestamp < CACHE_DURATION) {
+    performanceOptimizer.recordLoadTime(Date.now() - startTime)
+    return {
+      ...subfolderCache,
+      cached: true
+    }
+  }
+
+  try {
+    // Check if S3 is enabled and available
+    if (!isS3Enabled()) {
+      console.warn('S3 is not configured, returning empty subfolders')
+      const response = {
+        subfolders: [],
+        error: 'S3 not configured',
+        cached: false
+      }
+
+      // Cache the response
+      subfolderCache = response
+      subfolderCacheTimestamp = now
+
+      return response
+    }
+
+    // Create S3 service
+    const s3Service = createS3PhotoService()
+    if (!s3Service) {
+      console.error('Failed to create S3 service')
+      const response = {
+        subfolders: [],
+        error: 'S3 service unavailable',
+        cached: false
+      }
+
+      // Cache the error response
+      subfolderCache = response
+      subfolderCacheTimestamp = now
+
+      return response
+    }
+
+    // Fetch subfolders from S3
+    const subfolders = await s3Service.listSubfolders()
+
+    const response = {
+      subfolders,
+      cached: false
+    }
+
+    // Cache the successful response in legacy cache only
+    // (enhanced cache is typed for PhotosAPIResponse)
+    subfolderCache = response
+    subfolderCacheTimestamp = now
+
+    // Record performance metrics
+    performanceOptimizer.recordLoadTime(Date.now() - startTime)
+
+    return response
+  } catch (error) {
+    const errorDetails = analyzeError(error, { operation: 'getSubfolders' })
+    logError(errorDetails)
+
+    const errorMessage = getErrorMessage(errorDetails)
+
+    // Return empty subfolders on error
+    const response = {
+      subfolders: [],
+      error: errorMessage,
+      cached: false
+    }
+
+    // Cache the error response
+    subfolderCache = response
+    subfolderCacheTimestamp = now
+
+    return response
+  }
+}
+
+export function clearSubfolderCache(): void {
+  subfolderCache = null
+  subfolderCacheTimestamp = 0
+}
+
 export function clearAllCaches(): void {
   enhancedCache.clear()
   clearPhotoCache()
+  clearSubfolderCache()
   performanceOptimizer.resetMetrics()
 }

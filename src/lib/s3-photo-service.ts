@@ -21,7 +21,8 @@ import {
   S3PhotoService as IS3PhotoService,
   Photo,
   PhotoMetadata,
-  S3ObjectMetadata
+  S3ObjectMetadata,
+  Subfolder
 } from '@/types/s3'
 
 export class S3PhotoService implements IS3PhotoService {
@@ -53,10 +54,17 @@ export class S3PhotoService implements IS3PhotoService {
         return []
       }
 
-      // Filter for image files and process them
+      // Filter for image files in the root photos directory (exclude subfolders)
       const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif']
       const photoPromises = response.Contents.filter(object => {
         if (!object.Key) return false
+
+        // Exclude photos in subfolders - only include photos directly in photos/ directory
+        const relativePath = object.Key.replace('photos/', '')
+        if (relativePath.includes('/')) {
+          return false // This photo is in a subfolder
+        }
+
         const extension = object.Key.toLowerCase().substring(
           object.Key.lastIndexOf('.')
         )
@@ -153,6 +161,205 @@ export class S3PhotoService implements IS3PhotoService {
         false, // No fallback for signed URL errors
         errorDetails.context
       )
+    }
+  }
+
+  async listSubfolders(): Promise<Subfolder[]> {
+    try {
+      const command = new ListObjectsV2Command({
+        Bucket: this.config.bucketName,
+        Prefix: 'photos/',
+        Delimiter: '/',
+        MaxKeys: 1000
+      })
+
+      const response = await this.s3Client.send(command)
+
+      if (!response.CommonPrefixes) {
+        return []
+      }
+
+      const subfolderPromises = response.CommonPrefixes.map(async prefix => {
+        if (!prefix.Prefix) return null
+
+        const subfolderName = prefix.Prefix.replace('photos/', '').replace(
+          '/',
+          ''
+        )
+        const displayName = subfolderName.replace(/-/g, ' ').replace(/_/g, ' ')
+
+        try {
+          // Get photo count for this subfolder
+          const photoCount = await this.getSubfolderPhotoCount(subfolderName)
+
+          // Get cover image URL
+          const coverImageUrl = await this.getSubfolderCoverImage(subfolderName)
+
+          return {
+            name: subfolderName,
+            displayName: displayName,
+            coverImageUrl: coverImageUrl || undefined,
+            photoCount,
+            path: `photos/${subfolderName}/`
+          } as Subfolder
+        } catch (error) {
+          const errorDetails = analyzeError(error, { subfolderName })
+          logError(errorDetails, { operation: 'processSubfolder' })
+          return null
+        }
+      })
+
+      const subfolders = await Promise.all(subfolderPromises)
+      return subfolders.filter(
+        (subfolder): subfolder is Subfolder => subfolder !== null
+      )
+    } catch (error) {
+      const errorDetails = analyzeError(error, { operation: 'listSubfolders' })
+      logError(errorDetails)
+
+      throw new S3PhotoError(
+        errorDetails.type,
+        errorDetails.message,
+        errorDetails.retryable,
+        errorDetails.fallbackAvailable,
+        errorDetails.context
+      )
+    }
+  }
+
+  async listPhotosInSubfolder(subfolderName: string): Promise<Photo[]> {
+    try {
+      const command = new ListObjectsV2Command({
+        Bucket: this.config.bucketName,
+        Prefix: `photos/${subfolderName}/`,
+        MaxKeys: 1000
+      })
+
+      const response = await this.s3Client.send(command)
+
+      if (!response.Contents) {
+        return []
+      }
+
+      // Filter for image files and process them
+      const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif']
+      const photoPromises = response.Contents.filter(object => {
+        if (!object.Key) return false
+        const extension = object.Key.toLowerCase().substring(
+          object.Key.lastIndexOf('.')
+        )
+        return imageExtensions.includes(extension)
+      }).map(async object => {
+        if (!object.Key) return null
+
+        try {
+          const metadata = await this.getPhotoMetadata(object.Key)
+          const signedUrl = await this.generateSignedUrl(object.Key)
+
+          return {
+            src: signedUrl,
+            alt: metadata.alt,
+            caption: metadata.caption,
+            aspectRatio: metadata.aspectRatio
+          } as Photo
+        } catch (error) {
+          const errorDetails = analyzeError(error, { photoKey: object.Key })
+          logError(errorDetails, { operation: 'processSubfolderPhoto' })
+          return null
+        }
+      })
+
+      const photos = await Promise.all(photoPromises)
+      return photos.filter((photo): photo is Photo => photo !== null)
+    } catch (error) {
+      const errorDetails = analyzeError(error, {
+        operation: 'listPhotosInSubfolder',
+        subfolderName
+      })
+      logError(errorDetails)
+
+      throw new S3PhotoError(
+        errorDetails.type,
+        errorDetails.message,
+        errorDetails.retryable,
+        errorDetails.fallbackAvailable,
+        errorDetails.context
+      )
+    }
+  }
+
+  async getSubfolderCoverImage(subfolderName: string): Promise<string | null> {
+    try {
+      // Standard cover image filenames to check
+      const coverImageNames = [
+        'cover.jpg',
+        'cover.jpeg',
+        'thumbnail.jpg',
+        'thumbnail.jpeg'
+      ]
+
+      for (const coverName of coverImageNames) {
+        const coverKey = `photos/${subfolderName}/${coverName}`
+
+        try {
+          // Check if the cover image exists
+          const headCommand = new HeadObjectCommand({
+            Bucket: this.config.bucketName,
+            Key: coverKey
+          })
+
+          await this.s3Client.send(headCommand)
+
+          // If it exists, generate a signed URL
+          const signedUrl = await this.generateSignedUrl(coverKey)
+          return signedUrl
+        } catch (error) {
+          // Continue to next cover image name if this one doesn't exist
+          continue
+        }
+      }
+
+      return null
+    } catch (error) {
+      const errorDetails = analyzeError(error, {
+        operation: 'getSubfolderCoverImage',
+        subfolderName
+      })
+      logError(errorDetails)
+      return null
+    }
+  }
+
+  private async getSubfolderPhotoCount(subfolderName: string): Promise<number> {
+    try {
+      const command = new ListObjectsV2Command({
+        Bucket: this.config.bucketName,
+        Prefix: `photos/${subfolderName}/`,
+        MaxKeys: 1000
+      })
+
+      const response = await this.s3Client.send(command)
+
+      if (!response.Contents) {
+        return 0
+      }
+
+      // Count only image files
+      const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif']
+      return response.Contents.filter(object => {
+        if (!object.Key) return false
+        const extension = object.Key.toLowerCase().substring(
+          object.Key.lastIndexOf('.')
+        )
+        return imageExtensions.includes(extension)
+      }).length
+    } catch (error) {
+      const errorDetails = analyzeError(error, {
+        operation: 'getSubfolderPhotoCount',
+        subfolderName
+      })
+      logError(errorDetails)
+      return 0
     }
   }
 }
