@@ -18,7 +18,6 @@ export default function PhotoGalleryContainer({
   const [photos, setPhotos] = useState<Photo[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [cached, setCached] = useState(false)
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -52,7 +51,6 @@ export default function PhotoGalleryContainer({
         }
 
         setPhotos(data.photos)
-        setCached(data.cached || false)
       } catch (err) {
         console.error('Error fetching photos:', err)
         setError(err instanceof Error ? err.message : 'Failed to fetch photos')
@@ -169,11 +167,6 @@ export default function PhotoGalleryContainer({
   return (
     <div className="w-full">
       <PhotoGallery photos={photos} shuffle={shuffle} />
-      {cached && (
-        <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-4">
-          Photos loaded from cache
-        </p>
-      )}
     </div>
   )
 }
