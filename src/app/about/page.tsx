@@ -80,7 +80,7 @@ const AboutPage = () => {
       icon: <BriefcaseBusiness className="w-10 h-10 mb-2" />,
       description: (
         <>
-          2+ years
+          3+ years
           <br />
           Software Engineer
         </>
