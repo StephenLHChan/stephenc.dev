@@ -1,9 +1,5 @@
 import { Project } from './types'
 
-import thumbCrypto from '/public/images/projects/thumbnail_crypto.png'
-import thumbCrypto001 from '/public/images/projects/crypto-dashboard_001.png'
-import thumbCrypto002 from '/public/images/projects/crypto-dashboard_002.png'
-
 export const cryptoDashboard: Project = {
   id: 'crypto-dashboard',
   title: 'Crypto Dashboard',
@@ -13,17 +9,17 @@ export const cryptoDashboard: Project = {
     'A real-time cryptocurrency analysis dashboard that provides comprehensive market data, price trends, and analytical tools for crypto traders and enthusiasts. Built with Python and Dash framework for interactive visualizations.',
   yearFrom: '2022',
   yearTo: '2023',
-  thumbnail: thumbCrypto,
+  thumbnail: '/images/projects/thumbnail_crypto.png',
   website: 'https://stephen-c-crypto-dashboard.herokuapp.com',
   github: 'https://github.com/StephenLHChan/crypto-dashboard',
   technologies: ['Python', 'pandas', 'Dash', 'Plotly'],
   additionalImages: [
     {
-      src: thumbCrypto001,
+      src: '/images/projects/crypto-dashboard_001.png',
       alt: 'Crypto Dashboard Main View'
     },
     {
-      src: thumbCrypto002,
+      src: '/images/projects/crypto-dashboard_002.png',
       alt: 'Crypto Dashboard Analytics'
     }
   ]

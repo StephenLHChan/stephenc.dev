@@ -1,7 +1,5 @@
 import { Project } from './types'
 
-import thumbResumate from '/public/images/projects/resumate/logo.png'
-
 export const resumateProject: Project = {
   id: 'resumate',
   title: 'ResuMate',
@@ -9,7 +7,7 @@ export const resumateProject: Project = {
   description:
     'ResuMate is an AI-powered platform that helps job seekers create professional resumes, optimize their job search, and improve their career prospects.',
   yearFrom: '2025',
-  thumbnail: thumbResumate,
+  thumbnail: '/images/projects/resumate/logo.png',
   github: 'https://github.com/StephenLHChan/resumate',
   technologies: [
     'React',
