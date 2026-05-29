@@ -17,7 +17,7 @@ export const ProjectItem = ({
   id: string
   title: string
   description: string
-  thumbnail: StaticImageData
+  thumbnail: StaticImageData | string
   tags?: string[]
   year?: string
 }) => {
