@@ -12,7 +12,7 @@ interface ProjectPageLayoutProps {
   title: string
   yearFrom: string
   yearTo?: string
-  thumbnail: StaticImageData
+  thumbnail: StaticImageData | string
   description: string
   website?: string
   github?: string
@@ -20,7 +20,7 @@ interface ProjectPageLayoutProps {
   features?: string[]
   children?: ReactNode
   additionalImages?: {
-    src: StaticImageData
+    src: StaticImageData | string
     alt: string
   }[]
 }

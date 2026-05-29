@@ -3,8 +3,6 @@ import type { Metadata } from 'next'
 import Section from '@/components/section'
 import { ProjectItem } from '@/components/project/project-item'
 import { resumateProject } from '@/data/projects/resumate'
-
-import thumbPriceChecker from '/public/images/projects/thumbnail_pricechecker.png'
 import { cryptoDashboard } from '@/data/projects/crypto-dashboard'
 
 export const metadata: Metadata = {
@@ -39,7 +37,7 @@ const ProjectPage = () => {
             id="#"
             title="Price Checker"
             description="A web app to check the price of grocery"
-            thumbnail={thumbPriceChecker}
+            thumbnail="/images/projects/thumbnail_pricechecker.png"
             year="2023"
             tags={['React', 'TypeScript', 'Next.js']}
           />

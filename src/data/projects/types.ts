@@ -7,7 +7,7 @@ export interface Project {
   description: string
   yearFrom: string
   yearTo?: string
-  thumbnail: StaticImageData
+  thumbnail: StaticImageData | string
   website?: string
   github?: string
   technologies: string[]
@@ -15,7 +15,7 @@ export interface Project {
   challenges?: string[]
   solutions?: string[]
   additionalImages?: {
-    src: StaticImageData
+    src: StaticImageData | string
     alt: string
   }[]
 }

@@ -4,7 +4,6 @@ import './globals.css'
 
 import { cn } from '@/lib/utils'
 
-import Fonts from '@/components/fonts'
 import Footer from '@/components/footer'
 import { Navbar } from '@/components/navbar'
 import { ThemeProvider } from '@/components/theme-provider'
@@ -32,7 +31,6 @@ export const viewport: Viewport = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Fonts />
       <body>
         <ThemeProvider
           attribute="class"
