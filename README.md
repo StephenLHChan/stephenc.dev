@@ -17,7 +17,7 @@ A modern, responsive personal website built with Next.js and TypeScript. This pr
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/) 15.2.3
+- **Framework**: [Next.js](https://nextjs.org/) 16.0.0
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**:
   - [Tailwind CSS](https://tailwindcss.com/) 4.0.15
@@ -63,8 +63,8 @@ src/
 1. Clone the repository
 
 ```bash
-git clone https://github.com/StephenLHChan/stephenc.info.git
-cd stephen-homepage
+git clone https://github.com/StephenLHChan/stephenc.dev.git
+cd stephenc.dev
 ```
 
 2. Install dependencies
